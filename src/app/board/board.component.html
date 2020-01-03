@@ -1,0 +1,19 @@
+<div *ngIf="!gameEnded">
+  <span class="title" (click)="manageGame()">Tic Tac Toe</span>
+  <div class="line" *ngFor="let items of [].constructor(size); let i = index">
+    <app-cell class="cell" [lineIndex]="i" [columnIndex]="j" [currentPlayer]="currentPlayer"
+      (cellAdded)="addCellToBoard($event)" (cellPlayed)="cellPlayed($event)" ngClass="{ disabled: !playerMustPlay}"
+      *ngFor="let items of [].constructor(size); let j = index">
+    </app-cell>
+  </div>
+</div>
+<div *ngIf="gameEnded && !draw">
+  {{currentPlayer.getSurname()}} a gagné
+</div>
+<div *ngIf="gameEnded && draw">
+  Match nul
+</div>
+<div *ngIf="gameEnded">
+  <app-score-board [players]="players"></app-score-board>
+  <button (click)="restart()">Recommencer</button>
+</div>

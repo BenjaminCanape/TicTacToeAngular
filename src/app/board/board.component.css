@@ -1,0 +1,7 @@
+.cell {
+  display: inline-block;
+}
+
+.line {
+  display: flex;
+}
