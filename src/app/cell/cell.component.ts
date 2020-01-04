@@ -33,10 +33,12 @@ export class CellComponent implements OnInit {
   }
 
   handleClick() {
-    this.hasBeenPlayed = true;
-    this.changeDetector.detectChanges();
-    this.cellPlayed.emit(this.cell);
-    this.changeDetector.detach();
+    if (!this.hasBeenPlayed) {
+      this.hasBeenPlayed = true;
+      this.changeDetector.detectChanges();
+      this.cellPlayed.emit(this.cell);
+      this.changeDetector.detach();
+    }
   }
 
   reset() {

@@ -12,6 +12,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MatGridListModule } from "@angular/material/grid-list";
     MatIconModule,
     MatSnackBarModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,8 +16,8 @@
       Recommencer
     </button>
   </div>
-  <mat-grid-list cols="4">
-    <mat-grid-tile [colspan]="2" [rowspan]="1" *ngIf="!gameEnded">
+  <mat-grid-list #grid cols="4" [rowHeight]="size * 100">
+    <mat-grid-tile #boardGrid [colspan]="2" *ngIf="!gameEnded">
       <div class="game">
         <div
           class="line"
@@ -37,7 +37,7 @@
         </div>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="gameEnded ? 4 : 1" [rowspan]="1">
+    <mat-grid-tile [colspan]="gameEnded ? grid.cols : 2">
       <app-score-board [players]="players"></app-score-board>
     </mat-grid-tile>
   </mat-grid-list>

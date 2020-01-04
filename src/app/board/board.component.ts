@@ -1,11 +1,18 @@
+import { Subscription } from "rxjs";
+import { MediaChange, MediaObserver } from "@angular/flex-layout";
 import {
   Component,
   OnInit,
+  OnDestroy,
   Input,
+  ViewChild,
   ViewChildren,
-  QueryList
+  QueryList,
+  AfterContentInit
 } from "@angular/core";
+
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatGridList, MatGridTile } from "@angular/material";
 import Cell from "../models/cell";
 import Player from "../models/player";
 import { CellComponent } from "../cell/cell.component";
@@ -16,18 +23,30 @@ import { ManageGameService } from "../manage-game.service";
   templateUrl: "./board.component.html",
   styleUrls: ["./board.component.css"]
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, AfterContentInit, OnDestroy {
+  @ViewChild("grid", { static: true }) grid: MatGridList;
+  @ViewChild("boardGrid", { static: true }) boardGrid: MatGridTile;
   @ViewChildren(CellComponent) cellComponents: QueryList<CellComponent>;
   @Input() size: number;
+  watcher: Subscription;
   currentPlayer: Player = null;
   players: Player[] = [];
   cells: Cell[] = [];
   gameEnded = false;
   draw = false;
 
+  gridByBreakpoint = {
+    xl: 4,
+    lg: 4,
+    md: 4,
+    sm: 2,
+    xs: 2
+  };
+
   constructor(
     private manageGameService: ManageGameService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private mediaObserver: MediaObserver
   ) {}
 
   ngOnInit() {
@@ -39,6 +58,18 @@ export class BoardComponent implements OnInit {
       this.players,
       this.currentPlayer
     );
+  }
+
+  ngAfterContentInit() {
+    this.watcher = this.mediaObserver.media$.subscribe(
+      (change: MediaChange) => {
+        this.grid.cols = this.gridByBreakpoint[change.mqAlias];
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.watcher.unsubscribe();
   }
 
   openSnackBar(message: string, action: string) {
