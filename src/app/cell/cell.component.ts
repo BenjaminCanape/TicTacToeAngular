@@ -1,6 +1,14 @@
-import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from "@angular/core";
-import Cell from '../models/cell';
-import Player from '../models/player';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from "@angular/core";
+import Cell from "../models/cell";
+import Player from "../models/player";
 
 @Component({
   selector: "app-cell",
@@ -15,10 +23,9 @@ export class CellComponent implements OnInit {
   @Output() cellAdded: EventEmitter<any> = new EventEmitter();
   @Output() cellPlayed: EventEmitter<any> = new EventEmitter();
   cell: Cell;
-  hasBeenPlayed: boolean = false;
+  hasBeenPlayed = false;
 
-  constructor(private changeDetector: ChangeDetectorRef) {
-  }
+  constructor(private changeDetector: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.cell = new Cell(this.lineIndex, this.columnIndex, 0);

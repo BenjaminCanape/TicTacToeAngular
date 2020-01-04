@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-import { AppComponent } from './app.component';
-import { BoardComponent } from './board/board.component';
-import { CellComponent } from './cell/cell.component';
-import { ScoreBoardComponent } from './score-board/score-board.component';
+import { AppComponent } from "./app.component";
+import { BoardComponent } from "./board/board.component";
+import { CellComponent } from "./cell/cell.component";
+import { ScoreBoardComponent } from "./score-board/score-board.component";
 
 @NgModule({
   declarations: [
@@ -13,10 +13,8 @@ import { ScoreBoardComponent } from './score-board/score-board.component';
     CellComponent,
     ScoreBoardComponent
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

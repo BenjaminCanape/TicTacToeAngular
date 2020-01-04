@@ -1,8 +1,11 @@
 .cell {
-  border: 0.2rem solid black;
+  border: 0.2rem solid #ff0266;
   height: 5rem;
   width: 5rem;
   font-size: 5rem;
   text-align: center;
+  color: #616161;
   cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #e5e5e5;
 }

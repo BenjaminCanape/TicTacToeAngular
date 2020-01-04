@@ -1,45 +1,45 @@
-export default class player {
-    private id: number;
-    private surname: string;
-    private score: number;
-    private symbol: string;
+export default class Player {
+  private id: number;
+  private surname: string;
+  private score: number;
+  private symbol: string;
 
-    constructor(id: number, surname: string, symbol: string) {
-        this.id = id;
-        this.surname = surname;
-        this.symbol = symbol;
-        this.score = 0;
-    }
+  constructor(id: number, surname: string, symbol: string) {
+    this.id = id;
+    this.surname = surname;
+    this.symbol = symbol;
+    this.score = 0;
+  }
 
-    getId() {
-        return this.id;
-    }
+  getId() {
+    return this.id;
+  }
 
-    setSurname(surname: string) {
-        this.surname = surname;
-    }
+  setSurname(surname: string) {
+    this.surname = surname;
+  }
 
-    getSurname() {
-        return this.surname;
-    }
+  getSurname() {
+    return this.surname;
+  }
 
-    getScore() {
-        return this.score;
-    }
+  getScore() {
+    return this.score;
+  }
 
-    addToScore(score: number) {
-        this.score += score;
-    }
+  addToScore(score: number) {
+    this.score += score;
+  }
 
-    resetScore() {
-        this.score = 0;
-    }
+  resetScore() {
+    this.score = 0;
+  }
 
-    setSymbol(symbol: string) {
-        this.symbol = symbol;
-    }
+  setSymbol(symbol: string) {
+    this.symbol = symbol;
+  }
 
-    getSymbol() {
-        return this.symbol;
-    }
+  getSymbol() {
+    return this.symbol;
+  }
 }
