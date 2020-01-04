@@ -5,6 +5,13 @@ import { AppComponent } from "./app.component";
 import { BoardComponent } from "./board/board.component";
 import { CellComponent } from "./cell/cell.component";
 import { ScoreBoardComponent } from "./score-board/score-board.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatTableModule } from "@angular/material/table";
+import { MatSortModule } from "@angular/material/sort";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatButtonModule } from "@angular/material/button";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -13,7 +20,16 @@ import { ScoreBoardComponent } from "./score-board/score-board.component";
     CellComponent,
     ScoreBoardComponent
   ],
-  imports: [BrowserModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatSortModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatButtonModule,
+    MatGridListModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

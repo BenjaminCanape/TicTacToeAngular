@@ -1,4 +1,18 @@
 Tableau des scores
-<div *ngFor="let player of players">
-  <span>{{ player.getSurname() }}: {{ player.getScore() }}</span>
-</div>
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef>Symbole</th>
+    <td mat-cell *matCellDef="let element">{{ element.getSymbol() }}</td>
+  </ng-container>
+  <ng-container matColumnDef="surname">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom</th>
+    <td mat-cell *matCellDef="let element">{{ element.getSurname() }}</td>
+  </ng-container>
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Score</th>
+    <td mat-cell *matCellDef="let element">{{ element.getScore() }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

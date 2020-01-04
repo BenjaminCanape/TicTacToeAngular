@@ -5,6 +5,7 @@ import {
   ViewChildren,
   QueryList
 } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import Cell from "../models/cell";
 import Player from "../models/player";
 import { CellComponent } from "../cell/cell.component";
@@ -24,7 +25,10 @@ export class BoardComponent implements OnInit {
   gameEnded = false;
   draw = false;
 
-  constructor(private manageGameService: ManageGameService) {}
+  constructor(
+    private manageGameService: ManageGameService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     const player1 = new Player(1, "player 1", "X");
@@ -35,6 +39,12 @@ export class BoardComponent implements OnInit {
       this.players,
       this.currentPlayer
     );
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000
+    });
   }
 
   addCellToBoard(cell) {
@@ -77,6 +87,11 @@ export class BoardComponent implements OnInit {
       this.currentPlayer = this.manageGameService.getNextPlayer(
         this.players,
         this.currentPlayer
+      );
+
+      this.openSnackBar(
+        "Au tour de " + this.currentPlayer.getSurname() + " de jouer",
+        ""
       );
     }
   }

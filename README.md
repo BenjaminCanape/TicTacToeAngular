@@ -3,6 +3,7 @@
 This is The Tic Tac Toe Game
 You can play with two players
 
+Later I will use this project to play with brain.js
 
 ## Demo
 
@@ -20,5 +21,5 @@ To launch the app you need to open a terminal and type theses commands:
 
 ```
 npm install
-npm serve
+ng serve
 ```

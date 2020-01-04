@@ -1,26 +1,44 @@
-<span class="title" (click)="manageGame()">Tic Tac Toe</span>
-<div *ngIf="!gameEnded">
-  <div class="board">
-    <div class="line" *ngFor="let items of [].constructor(size); let i = index">
-      <app-cell
-        class="cell"
-        [lineIndex]="i"
-        [columnIndex]="j"
-        [currentPlayer]="currentPlayer"
-        (cellAdded)="addCellToBoard($event)"
-        (cellPlayed)="cellPlayed($event)"
-        ngClass="{ disabled: !playerMustPlay}"
-        *ngFor="let items of [].constructor(size); let j = index"
-      >
-      </app-cell>
-    </div>
+<ng-container class="board">
+  <span class="title" (click)="manageGame()">Tic Tac Toe</span>
+  <div class="description">
+    <p>
+      2 joueurs s'affrontent chacun à leur tour
+    </p>
+    <p>
+      Le premier qui arrivera à aligner {{ size }} symboles horizontalement,
+      verticalement ou en diagonale aura gagné
+    </p>
   </div>
-</div>
-<app-score-board [players]="players"></app-score-board>
-<div *ngIf="gameEnded && !draw">{{ currentPlayer.getSurname() }} a gagné</div>
-<div *ngIf="gameEnded && draw">
-  Match nul
-</div>
-<div *ngIf="gameEnded">
-  <button (click)="restart()">Recommencer</button>
-</div>
+  <div *ngIf="gameEnded" class="finishedGame">
+    <div *ngIf="!draw">{{ currentPlayer.getSurname() }} a gagné</div>
+    <div *ngIf="draw">Match nul</div>
+    <button mat-flat-button color="primary" (click)="restart()">
+      Recommencer
+    </button>
+  </div>
+  <mat-grid-list cols="4">
+    <mat-grid-tile [colspan]="2" [rowspan]="1" *ngIf="!gameEnded">
+      <div class="game">
+        <div
+          class="line"
+          *ngFor="let items of [].constructor(size); let i = index"
+        >
+          <app-cell
+            class="cell"
+            [lineIndex]="i"
+            [columnIndex]="j"
+            [currentPlayer]="currentPlayer"
+            (cellAdded)="addCellToBoard($event)"
+            (cellPlayed)="cellPlayed($event)"
+            ngClass="{ disabled: !playerMustPlay}"
+            *ngFor="let items of [].constructor(size); let j = index"
+          >
+          </app-cell>
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="gameEnded ? 4 : 1" [rowspan]="1">
+      <app-score-board [players]="players"></app-score-board>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-container>

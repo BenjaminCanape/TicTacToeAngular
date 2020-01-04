@@ -1,4 +1,8 @@
 .board {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.game {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,10 +14,22 @@
   margin-bottom: 1rem;
   margin-top: 0;
   border: 1px solid transparent;
-  border-radius: 0.25rem;
-  color: #0c5460;
-  background-color: #d1ecf1;
+  color: #fff;
+  background-color: #0c5460;
   border-color: #bee5eb;
   text-align: center;
   display: block;
+}
+
+.description {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.finishedGame {
+  text-align: center;
+}
+
+app-score-board {
+  width: 100%;
 }
