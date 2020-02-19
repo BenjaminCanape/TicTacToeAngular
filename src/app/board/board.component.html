@@ -39,7 +39,10 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="gameEnded ? grid.cols : 2">
-      <app-score-board [players]="players"></app-score-board>
+      <app-score-board
+        [players]="players"
+        [ngClass]="[grid.cols == 2 ? 'fullSize' : 'middleSize']"
+      ></app-score-board>
     </mat-grid-tile>
   </mat-grid-list>
 </ng-container>
