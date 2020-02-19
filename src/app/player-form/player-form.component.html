@@ -1,0 +1,11 @@
+Liste des joueurs:
+<form>
+  <mat-form-field *ngFor="let player of players">
+    <input
+      matInput
+      type="text"
+      [name]="player.id"
+      [(ngModel)]="player.surname"
+    />
+  </mat-form-field>
+</form>

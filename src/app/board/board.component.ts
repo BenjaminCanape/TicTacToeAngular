@@ -12,7 +12,7 @@ import {
 } from "@angular/core";
 
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { MatGridList, MatGridTile } from "@angular/material";
+import { MatGridList } from "@angular/material";
 import Cell from "../models/cell";
 import Player from "../models/player";
 import { CellComponent } from "../cell/cell.component";
@@ -25,7 +25,6 @@ import { ManageGameService } from "../manage-game.service";
 })
 export class BoardComponent implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild("grid", { static: true }) grid: MatGridList;
-  @ViewChild("boardGrid", { static: true }) boardGrid: MatGridTile;
   @ViewChildren(CellComponent) cellComponents: QueryList<CellComponent>;
   @Input() size: number;
   watcher: Subscription;

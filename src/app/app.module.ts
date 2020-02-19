@@ -1,5 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
 
 import { AppComponent } from "./app.component";
 import { BoardComponent } from "./board/board.component";
@@ -13,13 +15,15 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { PlayerFormComponent } from "./player-form/player-form.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     CellComponent,
-    ScoreBoardComponent
+    ScoreBoardComponent,
+    PlayerFormComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatSnackBarModule,
     MatButtonModule,
     MatGridListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

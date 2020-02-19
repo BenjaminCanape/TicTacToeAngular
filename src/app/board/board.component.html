@@ -8,6 +8,7 @@
       Le premier qui arrivera à aligner {{ size }} symboles horizontalement,
       verticalement ou en diagonale aura gagné
     </p>
+    <app-player-form [players]="players"></app-player-form>
   </div>
   <div *ngIf="gameEnded" class="finishedGame">
     <div *ngIf="!draw">{{ currentPlayer.getSurname() }} a gagné</div>
