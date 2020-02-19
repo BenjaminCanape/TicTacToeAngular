@@ -11,7 +11,6 @@
 .title {
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
   margin-top: 0;
   border: 1px solid transparent;
   color: #fff;
@@ -24,6 +23,16 @@
 .description {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.mat-expansion-panel {
+  background: #0c5460 !important;
+  border-color: #bee5eb;
+  margin-bottom: 1rem !important;
+}
+
+.rules {
+  margin-bottom: 1rem;
 }
 
 .finishedGame {

@@ -1,13 +1,24 @@
 <ng-container class="board">
-  <span class="title" (click)="manageGame()">Tic Tac Toe</span>
   <div class="description">
-    <p>
-      2 joueurs s'affrontent chacun à leur tour
-    </p>
-    <p>
-      Le premier qui arrivera à aligner {{ size }} symboles horizontalement,
-      verticalement ou en diagonale aura gagné
-    </p>
+    <mat-accordion class="rules">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Tic Tac Toe
+          </mat-panel-title>
+          <mat-panel-description>
+            Règles
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>
+          2 joueurs s'affrontent chacun à leur tour
+        </p>
+        <p>
+          Le premier qui arrivera à aligner {{ size }} symboles horizontalement,
+          verticalement ou en diagonale aura gagné
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
     <app-player-form [players]="players"></app-player-form>
   </div>
   <div *ngIf="gameEnded" class="finishedGame">

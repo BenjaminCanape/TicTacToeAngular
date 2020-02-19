@@ -2,6 +2,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 import { AppComponent } from "./app.component";
 import { BoardComponent } from "./board/board.component";
@@ -36,7 +37,8 @@ import { PlayerFormComponent } from "./player-form/player-form.component";
     MatGridListModule,
     FlexLayoutModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
