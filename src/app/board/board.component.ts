@@ -144,7 +144,7 @@ export class BoardComponent implements OnInit, AfterContentInit, OnDestroy {
   }
 
   aiPlay() {
-    const cell = this.manageGameService.cellToPlayByAI(this.cells, this.level);
+    const cell = this.manageGameService.cellToPlayByAI(this.cells, this.level, this.currentPlayer);
 
     this.cellComponents.forEach(component => {
       if (component.lineIndex === cell.getLineIndex() && component.columnIndex === cell.getColumnIndex()) {
