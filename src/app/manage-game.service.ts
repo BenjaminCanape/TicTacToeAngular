@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import Cell from "./models/cell";
 import Player from "./models/player";
+import Level from "./models/level";
 
 @Injectable({
   providedIn: "root"
@@ -52,5 +53,12 @@ export class ManageGameService {
 
   numberCellsLeftToPlay(cells: Cell[]) {
     return cells.filter(cell => cell.getPlayedByPlayerNumber() === 0).length;
+  }
+
+  cellToPlayByAI(cells: Cell[], level: string): Cell {
+    const cellsNotPlayed = cells.filter(cell => cell.getPlayedByPlayerNumber() === 0);
+    if (level === Level.EASY) {
+      return cellsNotPlayed[Math.floor(Math.random() * cellsNotPlayed.length)];
+    }
   }
 }

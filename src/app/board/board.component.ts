@@ -15,6 +15,7 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatGridList } from "@angular/material";
 import Cell from "../models/cell";
 import Player from "../models/player";
+import Level from "../models/level";
 import { CellComponent } from "../cell/cell.component";
 import { ManageGameService } from "../manage-game.service";
 
@@ -27,6 +28,7 @@ export class BoardComponent implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild("grid", { static: true }) grid: MatGridList;
   @ViewChildren(CellComponent) cellComponents: QueryList<CellComponent>;
   @Input() size: number;
+  @Input() level: Level;
   watcher: Subscription;
   currentPlayer: Player = null;
   players: Player[] = [];
@@ -50,7 +52,13 @@ export class BoardComponent implements OnInit, AfterContentInit, OnDestroy {
 
   ngOnInit() {
     const player1 = new Player(1, "player 1", "X");
-    const player2 = new Player(2, "player 2", "O");
+    let player2name = "Computer";
+    let canEditName = false;
+    if ( this.level === Level.PLAYER) {
+      player2name = "player 2";
+      canEditName = true;
+    }
+    const player2 = new Player(2, player2name, "O", canEditName);
     this.players.push(player1);
     this.players.push(player2);
     this.currentPlayer = this.manageGameService.getNextPlayer(
@@ -114,16 +122,36 @@ export class BoardComponent implements OnInit, AfterContentInit, OnDestroy {
     }
     this.gameEnded = hasWon || this.noCellsToPlay();
     if (!this.gameEnded) {
+      if (this.level !== Level.PLAYER && this.currentPlayer.getId() !== 2) {
+        this.currentPlayer = this.manageGameService.getNextPlayer(
+          this.players,
+          this.currentPlayer
+        );
+        return this.aiPlay();
+      }
+
       this.currentPlayer = this.manageGameService.getNextPlayer(
         this.players,
         this.currentPlayer
       );
-
-      this.openSnackBar(
-        "Au tour de " + this.currentPlayer.getSurname() + " de jouer",
-        ""
-      );
+      if (this.level === Level.PLAYER) {
+        this.openSnackBar(
+          "Au tour de " + this.currentPlayer.getSurname() + " de jouer",
+          ""
+        );
+      }
     }
+  }
+
+  aiPlay() {
+    const cell = this.manageGameService.cellToPlayByAI(this.cells, this.level);
+
+    this.cellComponents.forEach(component => {
+      if (component.lineIndex === cell.getLineIndex() && component.columnIndex === cell.getColumnIndex()) {
+        component.currentPlayer = this.currentPlayer;
+        component.handleClick();
+      }
+    });
   }
 
   restart() {

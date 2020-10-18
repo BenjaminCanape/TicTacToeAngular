@@ -6,6 +6,7 @@ Liste des joueurs:
       type="text"
       [name]="player.id"
       [(ngModel)]="player.surname"
+      [disabled]="!player.canEditName"
     />
   </mat-form-field>
 </form>

@@ -3,12 +3,14 @@ export default class Player {
   private surname: string;
   private score: number;
   private symbol: string;
+  private canEditName: boolean;
 
-  constructor(id: number, surname: string, symbol: string) {
+  constructor(id: number, surname: string, symbol: string, canEditName: boolean = true) {
     this.id = id;
     this.surname = surname;
     this.symbol = symbol;
     this.score = 0;
+    this.canEditName = canEditName;
   }
 
   getId() {
@@ -41,5 +43,13 @@ export default class Player {
 
   getSymbol() {
     return this.symbol;
+  }
+
+  setCandEditName(canEditName: boolean) {
+    this.canEditName = canEditName;
+  }
+
+  getCanEditName() {
+    return this.canEditName;
   }
 }

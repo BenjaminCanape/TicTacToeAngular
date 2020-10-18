@@ -1,0 +1,10 @@
+<div>
+    <div *ngIf="!level" class="difficultyMenu">
+        Choix du niveau de difficulté
+        <mat-divider></mat-divider>
+        <button mat-button color="primary" (click)="chooseLevel(LevelEnum.EASY)">Facile</button>
+        <mat-divider></mat-divider>
+        <button mat-button color="primary" (click)="chooseLevel(LevelEnum.PLAYER)" >Jouer à 2</button>
+    </div>
+    <app-board *ngIf="level" [size]="boardSize" [level]="level"></app-board>
+</div>
