@@ -90,7 +90,7 @@ export class ManageGameService {
         played = cells.filter(cellInFilter => (cellInFilter.getColumnIndex() === cell.getColumnIndex() || cellInFilter.getLineIndex() === cell.getLineIndex() || cellInFilter.getColumnIndex() === cell.getColumnIndex() - 1 || cellInFilter.getColumnIndex() === cell.getColumnIndex() + 1 || cellInFilter.getLineIndex() === cell.getLineIndex() - 1 || cellInFilter.getLineIndex() === cell.getLineIndex() + 1 ) && cellInFilter.getPlayedByPlayerNumber() !== currentPlayer.getId() && cellInFilter.getPlayedByPlayerNumber() !== 0);
       }
       let notPlayed = cells.filter(cellInFilter => (cellInFilter.getColumnIndex() === cell.getColumnIndex() || cellInFilter.getLineIndex() === cell.getLineIndex() || cellInFilter.getColumnIndex() === cell.getColumnIndex() - 1 || cellInFilter.getColumnIndex() === cell.getColumnIndex() + 1 || cellInFilter.getLineIndex() === cell.getLineIndex() - 1 || cellInFilter.getLineIndex() === cell.getLineIndex() + 1 ) && cellInFilter.getPlayedByPlayerNumber() === 0);
-      const score = played.length * 2 + notPlayed.length;
+      const score = played.length * 10 + notPlayed.length;
       possibilies.push({cell, score});
     });
 
